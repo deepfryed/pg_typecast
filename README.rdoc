@@ -1,0 +1,68 @@
+= pg_typecast
+
+* http://github.com/deepfryed/pg_typecast
+
+== Description
+
+Provides typecasting support for the pg gem. The code is extracted from the swift gem as
+a drop-in enhancement for users of the pg gem.
+
+== Dependencies
+
+* ruby   >= 1.9.1
+* pg     >= 0.9.0
+
+== Alternatives
+
+Swift (http://github.com/shanna/swift) is as fast as the pg gem with typecasting support 
+and drivers for mysql, postgresql and db2. 
+ 
+== Caveats
+
+* This gem overrides the PGresult#each method.
+* The rows are returned as hashes with field names as symbols and values typecast from
+  postgres types to ruby types.
+* Timestamp conversion is done to localtime. The server and client are assumed to be in
+  same timezone unless you use the 'timestamp with time zone' data type in postgresql.
+
+== Compiling
+
+If pg_config is not on your PATH, then just set POSTGRES_INCLUDE and POSTGRES_LIB environment variables
+to the include and lib directories.
+
+== Synopsis
+
+    require 'pg'
+    require 'pg_typecast'
+
+    adapter = PGconn.connect 'host=127.0.0.1 dbname=test'
+    result  = adapter.exec('select * from users')
+    result.each do |row|
+      p row
+    end
+
+== Typecasting
+
+The following table illustrates the typecasting done from postgresql types to native ruby types.
+
+    +--------------------+---------------------------+
+    | postgresql type    |   ruby type               |
+    +--------------------+---------------------------+
+    | bool               |   TrueClass or FalseClass |
+    | bytea              |   StringIO                |
+    | date               |   Date                    |
+    | float              |   Float                   |
+    | integer            |   Fixnum or Bignum        |
+    | numeric            |   BigDecimal              |
+    | timestamp          |   Time                    |
+    | timestampz         |   Time                    |
+    +--------------------+---------------------------+
+
+
+== TODO
+
+* tests.
+
+== License
+
+See LICENSE.

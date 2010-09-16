@@ -1,0 +1,4 @@
+ext/*
+!ext/*.c
+!ext/*.rb
+pkg/
