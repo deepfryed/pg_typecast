@@ -14,14 +14,17 @@ Gem::Specification.new do |s|
   s.email = ["deepfryed@gmail.com"]
   s.extensions = ["ext/extconf.rb"]
   s.extra_rdoc_files = [
-    "README.rdoc"
+    "LICENSE",
+     "README.rdoc"
   ]
   s.files = [
-    "README.rdoc",
+    "LICENSE",
+     "README.rdoc",
      "Rakefile",
      "VERSION",
      "ext/extconf.rb",
-     "ext/pg_typecast.c"
+     "ext/pg_typecast.c",
+     "pg_typecast.gemspec"
   ]
   s.homepage = %q{http://github.com/deepfryed/pg_typecast}
   s.rdoc_options = ["--charset=UTF-8"]
