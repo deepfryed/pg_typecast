@@ -14,9 +14,9 @@ a drop-in enhancement for users of the pg gem.
 
 == Alternatives
 
-Swift (http://github.com/shanna/swift) is as fast as the pg gem with typecasting support 
-and drivers for mysql, postgresql and db2. 
- 
+Swift (http://github.com/shanna/swift) is as fast as the pg gem with typecasting support
+and drivers for mysql, postgresql and db2.
+
 == Caveats
 
 * This gem overrides the PGresult#each method.
