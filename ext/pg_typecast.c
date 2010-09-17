@@ -124,8 +124,10 @@ VALUE result_each(VALUE self) {
                 PQgetisnull(res, r, c) ? Qnil : typecast(PQgetvalue(res, r, c), PQgetlength(res, r, c), types[c]));
         }
         rb_protect(rb_yield, tuple, &failed);
-        if (failed)
+        if (failed) {
+            free(types);
             rb_jump_tag(failed);
+        }
     }
 
     free(types);
