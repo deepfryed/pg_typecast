@@ -4,18 +4,14 @@
 
 == Description
 
-Provides typecasting support for the pg gem. The code is extracted from the swift gem as
-a drop-in enhancement for users of the pg gem.
+Provides typecasting support for the pg gem. The code is extracted from
+swift (http://github.com/shanna/swift) as a drop-in enhancement for users of
+pg.
 
 == Dependencies
 
 * ruby   >= 1.9.1
 * pg     >= 0.9.0
-
-== Alternatives
-
-Swift (http://github.com/shanna/swift) is as fast as the pg gem with typecasting support
-and drivers for mysql, postgresql and db2.
 
 == Caveats
 
@@ -58,10 +54,6 @@ The following table illustrates the typecasting done from postgresql types to na
     | timestampz         |   Time                    |
     +--------------------+---------------------------+
 
-
-== TODO
-
-* tests.
 
 == License
 

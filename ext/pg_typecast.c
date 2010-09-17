@@ -104,7 +104,7 @@ inline VALUE typecast(const char* data, uint64_t len, int pgtype) {
 }
 
 VALUE result_each(VALUE self) {
-    int r, c, rows, cols, *types;
+    int r, c, rows, cols, *types, failed;
     PGresult *res;
     Data_Get_Struct(self, PGresult, res);
 
@@ -123,7 +123,9 @@ VALUE result_each(VALUE self) {
             rb_hash_aset(tuple, rb_ary_entry(fields, c),
                 PQgetisnull(res, r, c) ? Qnil : typecast(PQgetvalue(res, r, c), PQgetlength(res, r, c), types[c]));
         }
-        rb_yield(tuple);
+        rb_protect(rb_yield, tuple, &failed);
+        if (failed)
+            rb_jump_tag(failed);
     }
 
     free(types);
