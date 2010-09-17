@@ -24,7 +24,9 @@ Gem::Specification.new do |s|
      "VERSION",
      "ext/extconf.rb",
      "ext/pg_typecast.c",
-     "pg_typecast.gemspec"
+     "pg_typecast.gemspec",
+     "test/helper.rb",
+     "test/test_types.rb"
   ]
   s.homepage = %q{http://github.com/deepfryed/pg_typecast}
   s.rdoc_options = ["--charset=UTF-8"]
