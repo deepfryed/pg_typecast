@@ -24,7 +24,7 @@ int64_t client_tzoffset(int64_t local, int isdst) {
   return (int64_t)(local + (isdst ? 3600 : 0) - mktime(&tm));
 }
 
-VALUE typecast_timestamp(const char *data, uint64_t len) {
+static VALUE typecast_timestamp(const char *data, uint64_t len) {
   struct tm tm;
   int64_t epoch, adjust, offset;
 
@@ -64,11 +64,11 @@ VALUE typecast_timestamp(const char *data, uint64_t len) {
   return rb_str_new(data, len);
 }
 
-VALUE typecast_date(const char *data, uint64_t len) {
+static VALUE typecast_date(const char *data, uint64_t len) {
   return rb_funcall(typecast_timestamp(data, len), rb_intern("to_date"), 0);
 }
 
-inline VALUE typecast(const char* data, uint64_t len, int pgtype) {
+static VALUE typecast(const char* data, uint64_t len, int pgtype) {
   size_t bytea_len;
   unsigned char* bytea;
   VALUE rv;
@@ -103,7 +103,7 @@ inline VALUE typecast(const char* data, uint64_t len, int pgtype) {
   }
 }
 
-VALUE result_each(VALUE self) {
+static VALUE result_each(VALUE self) {
     int r, c, rows, cols, *types, failed;
     PGresult *res;
     Data_Get_Struct(self, PGresult, res);
