@@ -8,6 +8,15 @@ Provides typecasting support for the pg gem. The code is extracted from
 swift (http://github.com/shanna/swift) as a drop-in enhancement for users of
 pg.
 
+== Status
+
+**THIS CODE IS NOT MAINTAINED ANYMORE**
+
+This was done as an initial proof of concept and is not maintained anymore. If you're looking
+for a database adapter that does typecasting for pg, have a look at
+https://github.com/deepfryed/swift-db-postgres
+
+
 == Dependencies
 
 * ruby   >= 1.9.1
